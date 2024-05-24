@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Basic HTML</title>
+    </head>
+    <body>
+        <div id="content">content from here</div>
+        <script>
+            async function  getData() {
+                    try{
+                        const response = await fetch('/getData');
+                        data = await response.json();
+                    document.getElementById('content').innerHTML = data.data;
+                } catch(e){
+                    console.log("error into fecth data ");
+                }
+            }
+
+        function polling() {
+            
+
+            setInterval(()=> {
+                getData();
+            }, 5000)
+        }
+            
+        polling();
+        </script>
+    </body>
+</html>
